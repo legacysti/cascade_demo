@@ -31,9 +31,10 @@
         var url = 'https://api.forecast.io/forecast/';
         var lati = 45.5898;
         var longi = -122.5951;
+        var date = 2016-06-01T00:00:00;
         var data;
 
-        $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
+        $.getJSON(url + apiKey + "/" + lati + "," + longi + "," + date + "?callback=?", function(data) {
           console.log(data);
           $('#weather').html('and the temperature is: ' + data.currently.temperature);
         });

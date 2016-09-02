@@ -10,9 +10,9 @@ var weatherData;
 
 /* Forecast.io API Variables (Weather Forecasting) */
 var FORECAST_URL = 	"https://api.forecast.io/forecast/";
-var FORECAST_API = 	"###";	// Your API Key
-var latitude     =	"###";	// Your Latitude
-var longitude    =	"###";	// Your Longitude
+var FORECAST_API = 	"f33d413250b6d07e6fa54b0a0d1bd5fa";	// Your API Key
+var latitude     =	"45.5898";	// Your Latitude
+var longitude    =	"-122.5951";	// Your Longitude
 
 /* Function: Fetch Forecast.io weather forecast */
 function fetchWeather() {
@@ -21,7 +21,7 @@ function fetchWeather() {
 		dataType: "jsonp",
 		success: function (data) { weatherData = data;	/* Store our newly aquired weather data */ }
 	});
-	
+
 	// Fetch the weather every fifteen minutes
 	setTimeout(function() { fetchWeather();  }, 900000);
 }
@@ -60,16 +60,16 @@ function round(number, points) {
  *
  */
 function currentWeather() {
-	
+
 	// Animated Skycon for current conditions
 	skycons.set("weatherCurrent", weatherData.currently.icon);    // Skycon Icons by Dark Sky
-	
+
 	// Temperature
 	$('.temp_current').update(round(weatherData.currently.temperature, 1) + '&deg;');
 
 	// Daily summary
 	$('.conditions_current').update(weatherData.hourly.summary);
-	
+
 	// Daily maximum & minimum temperature
 	if (weatherData.flags.units === "us") {
 		$('.temperature').update(round(weatherData.daily.data[0].temperatureMax) + '&deg;' + ' / ' + round(weatherData.daily.data[0].temperatureMin) + '&deg;');
@@ -118,27 +118,27 @@ function forecastWeather() {
 
 	// Weekly forcast summary
 	$('.conditions_future').update(weatherData.daily.summary);
-	
+
 	// Loop through the next 7 days
 	for(var i = 1; i < weatherData.daily.data.length; i++) {
 		var obj = weatherData.daily.data[i];
 		var day = obj.time;
-		
+
 		// Day title
 		var day_day = moment.unix(day).format('dddd');
 		$('.day'+i).update(day_day);
-		
+
 		// Maximum
 		var day_max = round(obj.temperatureMax);
 		$('.max'+i).update(day_max+'&deg;');
-		
+
 		// Minimum
 		var day_min = round(obj.temperatureMin);
 		$('.min'+i).update('/ ' + day_min+'&deg;');
-		
+
 		// Animated Skycon
 		var day_icon = obj.icon;
 		skycons.set("weather"+i, day_icon);
 	}
-			
+
 }
