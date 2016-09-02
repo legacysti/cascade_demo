@@ -34,7 +34,7 @@
         var data;
 
         $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
-          //console.log(data);
+          console.log(data);
           $('#weather').html('and the temperature is: ' + data.currently.temperature);
         });
     }
