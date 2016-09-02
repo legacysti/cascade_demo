@@ -10,8 +10,8 @@
 
 <html>
     <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <!--
-        //<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         //<script type="text/javascript" src="https://www.google.com/jsapi"></script>
         //<script src="getInfo.js"></script>
         //<script type="text/javascript" src="drawData.js"></script>
@@ -19,13 +19,31 @@
     -->
 </head>
 
-<h1> Welcome to the Spoticus</h1>
+<h1>What is the weather like?</h1>
 
+
+<button onclick="b()">Submit</button>
+    <script>
+
+    function b(){
+
+        var apiKey = 'f33d413250b6d07e6fa54b0a0d1bd5fa';
+        var url = 'https://api.forecast.io/forecast/';
+        var lati = 45.5898;
+        var longi = -122.5951;
+        var data;
+
+        $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
+          //console.log(data);
+          $('#weather').html('and the temperature is: ' + data.currently.temperature);
+        });
+    }
+    </script>
 
 <body>
-
-    <h3> What data would you like to view?</h3>
     <!--
+    <h3> What data would you like to view?</h3>
+
     <ul id="navbar">
 
         <li><a href="artist.html">Artists</a></li>
