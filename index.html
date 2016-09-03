@@ -40,7 +40,7 @@
 
         $.getJSON(url + apiKey + "/" + lati + "," + longi + "," + year +"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(results) {
           console.log(results);
-          //$('#weather').html('and the temperature is: ' + data.currently.temperature);
+          $('#weather').html('and the temperature is: ' + data.currently.temperature);
         });
 
         var resultJson = results;
