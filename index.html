@@ -52,7 +52,12 @@
         var num = Number(string);
         num++;
         num.toString();
-        return num;
+        if(str.length < 2){
+            return "0"+num;
+        }
+        else{
+            return num;
+        }
     }
 
     function getData(){
@@ -72,9 +77,7 @@
         //for (j = 0; j < 2; j++){
         //    incString(day);
         console.log("day before: "+day);
-        var num = Number(day);
-        num++;
-        day = num.toString();
+        day = incString(day);
         console.log("day of: "+ day);
         $.getJSON(url + apiKey + "/" + lati + "," + longi + "," +year+"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(data) {
           console.log(data);
