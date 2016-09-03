@@ -28,7 +28,7 @@ function fetchWeather() {
 	});
 	var stringJson = JSON.stringify(weatherData);
 	console.log("string here "+ stringJson);
-	console.log("check for current temp"+stringJson.latitude);
+	console.log("check for current temp : "+stringJson.latitude);
 	//console.log("temp for day 1"+ stringJson.hourly.data[0].temperature);
 	//console.log("weatherData.data[0].temperature"+weatherData.data[0].temperature);
 	//document.getElementById("demo").innerHTML = weatherData.temperature;
@@ -72,7 +72,7 @@ function round(number, points) {
 function currentWeather() {
 
 	// Animated Skycon for current conditions
-	skycons.set("weatherCurrent", weatherData.currently.icon);    // Skycon Icons by Dark Sky
+	//skycons.set("weatherCurrent", weatherData.currently.icon);    // Skycon Icons by Dark Sky
 
 	// Temperature
 	$('.temp_current').update(round(weatherData.currently.temperature, 1) + '&deg;');
