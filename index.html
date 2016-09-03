@@ -29,8 +29,18 @@
 <p id="demo"></p>
 
 
+<weather>
+   <span class="conditions_current"></span>
+   <infomation>
+     <span class="temperature"></span>
+     <span class="sunrise"></span>
+     <span class="sunset"></span>
+     <span class="wind"></span>
+     <span class="precip_prob"></span>
+     <span class="humidity"></span>
+   </infomation>
+</weather>
 
-<!--
 <button onclick="getData()">Submit</button>
     <script>
 
@@ -50,7 +60,7 @@
 
         $.getJSON(url + apiKey + "/" + lati + "," + longi + "," + year +"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(data) {
           console.log(data);
-          //resultJson = data;
+          resultJson = data;
           $('#weather').html('and the temperature is: ' + data.currently.temperature);
         });
 
@@ -74,7 +84,7 @@
     }
     **/
     </script>
--->
+
 
 <body>
     <!--
