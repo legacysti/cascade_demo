@@ -29,8 +29,8 @@ function fetchWeather() {
 		}
 	});
 	console.log("here"+weatherData);
-	var parseJson = JSON.parse(weatherData);
-	console.log("parse here "+ parseJson);
+	var stringJson = JSON.stringify(weatherData);
+	console.log("string here "+ stringJson);
 	//console.log("weatherDataparse"+parseJson.hourly.data[0].temperature);
 	//console.log("weatherData.data[0].temperature"+weatherData.data[0].temperature);
 	//document.getElementById("demo").innerHTML = weatherData.temperature;
