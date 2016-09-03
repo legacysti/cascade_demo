@@ -74,11 +74,13 @@ function currentWeather() {
 	// Animated Skycon for current conditions
 	//skycons.set("weatherCurrent", weatherData.currently.icon);    // Skycon Icons by Dark Sky
 
+	// Daily summary
+	$('.conditions_current').update(weatherData.hourly.summary);
+	
 	// Temperature
 	$('.temp_current').update(round(weatherData.currently.temperature, 1) + '&deg;');
 
-	// Daily summary
-	$('.conditions_current').update(weatherData.hourly.summary);
+
 
 	// Daily maximum & minimum temperature
 	if (weatherData.flags.units === "us") {
