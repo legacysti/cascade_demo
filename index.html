@@ -51,12 +51,12 @@
     function incString(string){
         var num = Number(string);
         num++;
-        num.toString();
-        if(num.length < 2){
-            return "0"+num;
+        var str = num.toString();
+        if(str.length < 2){
+            return "0"+str;
         }
         else{
-            return num;
+            return str;
         }
     }
 
