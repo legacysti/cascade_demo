@@ -24,18 +24,16 @@ function fetchWeather() {
 		dataType: "jsonp",
 		success: function (data) { weatherData = data;	/* Store our newly aquired weather data */
 
-		console.log("data"+ data);
-		console.log("weatherData"+ weatherData);
 		}
 	});
-	console.log("here"+weatherData);
 	var stringJson = JSON.stringify(weatherData);
 	console.log("string here "+ stringJson);
+	console.log(stringJson.currently.temperature);
 	//console.log("weatherDataparse"+parseJson.hourly.data[0].temperature);
 	//console.log("weatherData.data[0].temperature"+weatherData.data[0].temperature);
 	//document.getElementById("demo").innerHTML = weatherData.temperature;
 	// Fetch the weather every fifteen minutes
-	//setTimeout(function() { fetchWeather();  }, 900000);
+	setTimeout(function() { fetchWeather();  }, 900000);
 }
 
 
