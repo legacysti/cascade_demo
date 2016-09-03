@@ -10,7 +10,7 @@
 
 <html>
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
         <!--
         //<script type="text/javascript" src="https://www.google.com/jsapi"></script>
         //<script src="getInfo.js"></script>
@@ -22,23 +22,47 @@
 <h1>What is the weather like?</h1>
 
 
-<button onclick="b()">Submit</button>
+<button onclick="getData()">Submit</button>
     <script>
 
-    function b(){
+    function getData(){
 
         var apiKey = 'f33d413250b6d07e6fa54b0a0d1bd5fa';
         var url = 'https://api.forecast.io/forecast/';
         var lati = 45.5898;
         var longi = -122.5951;
+        var year = 2016;
+        var month = 06;
+        var day = 01;
         var data;
+        var hotCount;
+        var coldCount;
 
-        $.getJSON(url + apiKey + "/" + lati + "," + longi + "," + "2016-06-01T00:00:00" +"?callback=?", function(data) {
-          console.log(data);
-          $('#weather').html('and the temperature is: ' + data.currently.temperature);
+        $.getJSON(url + apiKey + "/" + lati + "," + longi + "," + year +"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(results) {
+          console.log(results);
+          //$('#weather').html('and the temperature is: ' + data.currently.temperature);
         });
+
+        var resultJson = results;
+
+        for (i = 0, i < resultJson.hourly.data.length, i++){
+            console.log(resultJson.hourly.data[0].temperature);
+        }
+
+
     }
+    /**
+    function checkTemp(id, newUsername) {
+        for (var i=0; i<jsonObj.length; i++) {
+            if (jsonObj[i].Id === id) {
+                jsonObj[i].Username = newUsername;
+                return;
+            }
+        }
+    }
+    **/
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 <body>
     <!--
