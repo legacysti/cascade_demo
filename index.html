@@ -38,12 +38,12 @@
         var hotCount;
         var coldCount;
 
-        $.getJSON(url + apiKey + "/" + lati + "," + longi + "," + year +"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(results) {
-          console.log(results);
+        $.getJSON(url + apiKey + "/" + lati + "," + longi + "," + year +"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(data) {
+          console.log(data);
           $('#weather').html('and the temperature is: ' + data.currently.temperature);
         });
 
-        var resultJson = results;
+        var resultJson = data;
 
         for (i = 0; i < resultJson.hourly.data.length; i++){
             console.log(resultJson.hourly.data[0].temperature);
