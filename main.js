@@ -25,8 +25,8 @@ function fetchWeather() {
 		success: function (data) { weatherData = data;	/* Store our newly aquired weather data */ }
 	});
 	console.log(weatherData);
-	document.write(weatherData.temperature);
-	document.write(weatherData.data[0].temperature);
+	console.log("weatherData.temperature"+weatherData.data.temperature);
+	console.log("weatherData.data[0].temperature"+weatherData.data[0].temperature);
 	//document.getElementById("demo").innerHTML = weatherData.temperature;
 	// Fetch the weather every fifteen minutes
 	setTimeout(function() { fetchWeather();  }, 900000);
