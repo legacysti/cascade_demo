@@ -22,15 +22,18 @@ function fetchWeather() {
 	$.ajax({
 		url: FORECAST_URL + FORECAST_API + '/' + latitude + ',' + longitude + "," + year +"-" + month + "-" + day + "T00:00:00" +"?units=auto",
 		dataType: "jsonp",
-		success: function (data) { weatherData = data;	/* Store our newly aquired weather data */ }
+		success: function (data) { weatherData = data;	/* Store our newly aquired weather data */
+		console.log("data"+ data);
+		console.log("weatherData"+ weatherData);;
+		}
 	});
-	console.log(weatherData);
-	var parseJson = JSON.parse(weatherData);
-	console.log("weatherDataparse"+parseJson.hourly.data[0].temperature);
+	//console.log(weatherData);
+	//var parseJson = JSON.parse(weatherData);
+	//console.log("weatherDataparse"+parseJson.hourly.data[0].temperature);
 	//console.log("weatherData.data[0].temperature"+weatherData.data[0].temperature);
 	//document.getElementById("demo").innerHTML = weatherData.temperature;
 	// Fetch the weather every fifteen minutes
-	setTimeout(function() { fetchWeather();  }, 900000);
+	//setTimeout(function() { fetchWeather();  }, 900000);
 }
 
 
