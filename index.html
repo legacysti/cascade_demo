@@ -47,11 +47,14 @@
 <button onclick="getData()">Get Data</button>
 
     <script>
+
     function incString(string){
         var num = Number(string);
         num++;
         num.toString();
+        return num;
     }
+
     function getData(){
 
         var apiKey = 'f33d413250b6d07e6fa54b0a0d1bd5fa';
@@ -72,7 +75,10 @@
           console.log(data);
           resultJson = data;
           console.log("day before: "+day);
-          incString(day);
+          //incString(day);
+          var num = Number(day);
+          num++;
+          day = num.toString();
           console.log("day of: "+ day);
           //data.hourly.data.length
           for (i = 0; i < data.hourly.data.length; i ++){
