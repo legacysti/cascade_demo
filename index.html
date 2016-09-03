@@ -60,7 +60,7 @@
         var longi = -122.5951;
         var year = "2016";
         var month = "06";
-        var day = "00";
+        var day = "01";
         var data;
         var acOn = 0;
         var heaterOn = 0;
@@ -72,7 +72,7 @@
           console.log(data);
           resultJson = data;
           //data.hourly.data.length
-          for (i = 0; i < 10; i ++){
+          for (i = 0; i < data.hourly.data.length; i ++){
               if (data.hourly.data[i].temperature > 75){
                   acOn++;
               }
