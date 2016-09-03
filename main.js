@@ -24,7 +24,7 @@ function fetchWeather() {
 		dataType: "jsonp",
 		success: function (data) { weatherData = data;	/* Store our newly aquired weather data */
 		console.log("data"+ data);
-		console.log("weatherData"+ weatherData);;
+		console.log("weatherData"+ weatherData);
 		}
 	});
 	console.log("here"+weatherData);
