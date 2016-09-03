@@ -42,7 +42,8 @@
    </infomation>
 </weather>
 
-<p id="weather">Here's the weather:<p>
+<p id="ac">AC switches:</p>
+<p id="heater"> Heater switchs </p>
 <button onclick="getData()">Get Data</button>
 
     <script>
@@ -57,8 +58,8 @@
         var month = "06";
         var day = "01";
         var data;
-        var hotCount;
-        var coldCount;
+        var acOn;
+        var heaterOn;
         var resultJson;
 
         /**
@@ -71,10 +72,19 @@
         $.getJSON(url + apiKey + "/" + lati + "," + longi + "," +year+"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(data) {
           console.log(data);
           resultJson = data;
-              //$('#weather').html('and the temperature is: ' + data.hourly.data[0].temperature);
+          for (i = 0; i < data.hourly.data.length; i ++){
+              if (data.hourly.data[i].temperature > 75){
+                  acOn++;
+              }
+              else if (data.hourly.data[i].temperature < 62) {
+                  heaterOn++;
+              }
+          }
+              $('#ac').html('and the ac was turned on ' + acOn + " times.");
+              $('#heater').html('and the heater was turned on ' + heaterOn + " times.");
         });
         //**/
-        $('#weather').html('and the temperature is: ' + resultJson.hourly.data[0].temperature);
+        //$('#weather').html('and the temperature is: ' + resultJson.hourly.data[0].temperature);
 
 
         //console.log(resultJson.currently.temperature);
