@@ -58,8 +58,8 @@
         var month = "06";
         var day = "01";
         var data;
-        var acOn;
-        var heaterOn;
+        var acOn = 0;
+        var heaterOn = 0;
         var resultJson;
 
         /**
@@ -72,7 +72,8 @@
         $.getJSON(url + apiKey + "/" + lati + "," + longi + "," +year+"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(data) {
           console.log(data);
           resultJson = data;
-          for (i = 0; i < data.hourly.data.length; i ++){
+          //data.hourly.data.length
+          for (i = 0; i < 10; i ++){
               if (data.hourly.data[i].temperature > 75){
                   acOn++;
               }
