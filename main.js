@@ -26,7 +26,7 @@ function fetchWeather() {
 	});
 	console.log(weatherData);
 	var parseJson = JSON.parse(weatherData);
-	console.log("weatherDataparse"+parseJson.hourly.data.temperature);
+	console.log("weatherDataparse"+parseJson.hourly.data[0].temperature);
 	//console.log("weatherData.data[0].temperature"+weatherData.data[0].temperature);
 	//document.getElementById("demo").innerHTML = weatherData.temperature;
 	// Fetch the weather every fifteen minutes
