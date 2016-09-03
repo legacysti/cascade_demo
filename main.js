@@ -29,6 +29,7 @@ function fetchWeather() {
 	var stringJson = JSON.stringify(weatherData);
 	console.log("string here "+ stringJson);
 	console.log("check for current temp"+stringJson.currently.temperature);
+	console.log("temp for day 1"+ stringJson.hourly.data[0].temperature);
 	//console.log("weatherDataparse"+parseJson.hourly.data[0].temperature);
 	//console.log("weatherData.data[0].temperature"+weatherData.data[0].temperature);
 	//document.getElementById("demo").innerHTML = weatherData.temperature;
