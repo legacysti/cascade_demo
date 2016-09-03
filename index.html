@@ -21,15 +21,15 @@
 </head>
 
 <h1>What is the weather like?</h1>
-
+<!--
 <button onclick="fetchWeather()">Submit</button>
 
 <p id="demo"></p>
+-->
 
 
-<!--<
 <button onclick="getData()">Submit</button>
-    script>
+    <script>
 
     function getData(){
 
@@ -43,13 +43,16 @@
         var data;
         var hotCount;
         var coldCount;
+        var resultJson;
 
         $.getJSON(url + apiKey + "/" + lati + "," + longi + "," + year +"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(data) {
           console.log(data);
+          resultJson= data;
           $('#weather').html('and the temperature is: ' + data.currently.temperature);
         });
 
-        var resultJson = data;
+
+        console.log(resultJson.currently.temperature);
 
         //for (i = 0; i < resultJson.hourly.data.length; i++){
         //    console.log(resultJson.hourly.data[0].temperature);
@@ -67,7 +70,7 @@
         }
     }
     **/
-</script>-->
+</script>
 
 
 <body>
