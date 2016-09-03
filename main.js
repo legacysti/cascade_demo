@@ -21,7 +21,8 @@ function fetchWeather() {
 		dataType: "jsonp",
 		success: function (data) { weatherData = data;	/* Store our newly aquired weather data */ }
 	});
-
+	console.log(weatherData)
+	document.getElementById("demo").innerHTML = weatherData;
 	// Fetch the weather every fifteen minutes
 	setTimeout(function() { fetchWeather();  }, 900000);
 }
