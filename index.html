@@ -71,15 +71,14 @@
 
         //for (j = 0; j < 2; j++){
         //    incString(day);
+        console.log("day before: "+day);
+        var num = Number(day);
+        num++;
+        day = num.toString();
+        console.log("day of: "+ day);
         $.getJSON(url + apiKey + "/" + lati + "," + longi + "," +year+"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(data) {
           console.log(data);
           resultJson = data;
-          console.log("day before: "+day);
-          //incString(day);
-          var num = Number(day);
-          num++;
-          day = num.toString();
-          console.log("day of: "+ day);
           //data.hourly.data.length
           for (i = 0; i < data.hourly.data.length; i ++){
               if (data.hourly.data[i].temperature > 75){
