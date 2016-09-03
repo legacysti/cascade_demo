@@ -68,12 +68,13 @@
             });
         **/
         ///**
-        $.getJSON(url + apiKey + "/" + lati + "," + longi + "," +"2016-06-01T00:00:00" +"?callback=?", function(data) {
+        $.getJSON(url + apiKey + "/" + lati + "," + longi + "," +year+"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(data) {
           console.log(data);
           resultJson = data;
-              $('#weather').html('and the temperature is: ' + data.hourly.data[0].temperature);
+              //$('#weather').html('and the temperature is: ' + data.hourly.data[0].temperature);
         });
         //**/
+        $('#weather').html('and the temperature is: ' + resultJson.hourly.data[0].temperature);
 
 
         //console.log(resultJson.currently.temperature);
