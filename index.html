@@ -10,7 +10,7 @@
 
 <html>
     <head>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <!--
         //<script type="text/javascript" src="https://www.google.com/jsapi"></script>
         //<script src="getInfo.js"></script>
@@ -21,9 +21,13 @@
 
 <h1>What is the weather like?</h1>
 
+<button onclick="fetchData()">Submit</button>
 
+
+
+<!--<
 <button onclick="getData()">Submit</button>
-    <script>
+    script>
 
     function getData(){
 
@@ -45,9 +49,9 @@
 
         var resultJson = data;
 
-        for (i = 0; i < resultJson.hourly.data.length; i++){
-            console.log(resultJson.hourly.data[0].temperature);
-        }
+        //for (i = 0; i < resultJson.hourly.data.length; i++){
+        //    console.log(resultJson.hourly.data[0].temperature);
+        //}
 
 
     }
@@ -61,8 +65,8 @@
         }
     }
     **/
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</script>-->
+
 
 <body>
     <!--
