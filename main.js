@@ -23,12 +23,14 @@ function fetchWeather() {
 		url: FORECAST_URL + FORECAST_API + '/' + latitude + ',' + longitude + "," + year +"-" + month + "-" + day + "T00:00:00" +"?units=auto",
 		dataType: "jsonp",
 		success: function (data) { weatherData = data;	/* Store our newly aquired weather data */
+
 		console.log("data"+ data);
 		console.log("weatherData"+ weatherData);
 		}
 	});
 	console.log("here"+weatherData);
-	//var parseJson = JSON.parse(weatherData);
+	var parseJson = JSON.parse(weatherData);
+	console.log("parse here "+ parseJson);
 	//console.log("weatherDataparse"+parseJson.hourly.data[0].temperature);
 	//console.log("weatherData.data[0].temperature"+weatherData.data[0].temperature);
 	//document.getElementById("demo").innerHTML = weatherData.temperature;
