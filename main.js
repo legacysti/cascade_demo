@@ -13,16 +13,21 @@ var FORECAST_URL = 	"https://api.forecast.io/forecast/";
 var FORECAST_API = 	"f33d413250b6d07e6fa54b0a0d1bd5fa";	// Your API Key
 var latitude     =	"45.5898";	// Your Latitude
 var longitude    =	"-122.5951";	// Your Longitude
+var year         =  "2016"
+var month        =	"06"
+var day          =	"01"
 
 /* Function: Fetch Forecast.io weather forecast */
 function fetchWeather() {
 	$.ajax({
-		url: FORECAST_URL + FORECAST_API + '/' + latitude + ',' + longitude + "?units=auto",
+		url: FORECAST_URL + FORECAST_API + '/' + latitude + ',' + longitude + "," + year +"-" + month + "-" + day + "T00:00:00" +"?units=auto",
 		dataType: "jsonp",
 		success: function (data) { weatherData = data;	/* Store our newly aquired weather data */ }
 	});
-	console.log(weatherData)
-	document.getElementById("demo").innerHTML = weatherData;
+	console.log(weatherData);
+	document.write(weatherData.temperature);
+	document.write(weatherData.data[0].temperature);
+	//document.getElementById("demo").innerHTML = weatherData.temperature;
 	// Fetch the weather every fifteen minutes
 	setTimeout(function() { fetchWeather();  }, 900000);
 }
