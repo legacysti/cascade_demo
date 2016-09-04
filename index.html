@@ -77,7 +77,7 @@
         var heatArr = [];
         var resultJson;
 
-        for (j = 0; j < 30; j++){//for each day
+        for (j = 0; j < 2; j++){//for each day
             //console.log("day before: "+day);
             //increment day
             day = incString(day);
@@ -87,7 +87,7 @@
               //console.log(data);
               //resultJson = data;
               //iterate through JSON to find the temperatures of evvery hour for the day
-              /**
+
               for (i = 0; i < data.hourly.data.length; i++){
                   if (data.hourly.data[i].temperature > 75){
                       acOn = acOn+1;
@@ -96,7 +96,7 @@
                       heaterOn = heaterOn+1;
                   }
               }
-              **/
+              
                   $('#ac').html('and the ac was turned on ' + acOn + " times.");
                   console.log("ac "+acOn);
                   acArr.push(acOn);
