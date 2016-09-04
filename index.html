@@ -96,14 +96,15 @@
               }
                   $('#ac').html('and the ac was turned on ' + acOn + " times.");
                   console.log("ac "+acOn);
+                  acArr.push(acOn);
                   $('#heater').html('and the heater was turned on ' + heaterOn + " times.");
                   console.log("heater "+heaterOn);
+                  heatArr.push(heaterOn);
                   //console.log("length of data array: "+data.hourly.data.length);
             });
             //push all data to arrays for later use
             dateArr.push(year+"-"+month+"-"+day);
-            acArr.push(acOn);
-            heatArr.push(heaterOn);
+
 
             //reset ac and heater counters
             acOn = 0;
