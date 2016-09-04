@@ -77,7 +77,7 @@
         var heatArr = [];
         var resultJson;
 
-        for (j = 0; j < 2; j++){//for each day
+        for (j = 0; j < 30; j++){//for each day
             //console.log("day before: "+day);
             //increment day
             day = incString(day);
@@ -106,12 +106,13 @@
                   //reset ac and heater counters
                   acOn = 0;
                   heaterOn = 0;
+                  console.log(dateArr[0] + ": ac: "+acArr[0]+", heat: "+heatArr[0]);
+                  console.log(dateArr[1] + ": ac: "+acArr[1]+", heat: "+heatArr[1]);
             });
             //push all data to arrays for later use
             dateArr.push(year+"-"+month+"-"+day);
         }
-        console.log(dateArr[0] + ": ac: "+acArr[0]+", heat: "+heatArr[0]);
-        console.log(dateArr[1] + ": ac: "+acArr[1]+", heat: "+heatArr[1]);
+
 
         /**
         var resultJson = '{'+ '"results"'+'[{'+
