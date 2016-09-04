@@ -85,7 +85,7 @@
             //call api to GET json
             $.getJSON(url + apiKey + "/" + lati + "," + longi + "," +year+"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(data) {
               //console.log(data);
-              resultJson = data;
+              resultJson = JSON.stringify(data);
               //iterate through JSON to find the temperatures of evvery hour for the day
                   $('#ac').html('and the ac was turned on ' + acOn + " times.");
 
