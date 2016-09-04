@@ -85,28 +85,29 @@
             //call api to GET json
             $.getJSON(url + apiKey + "/" + lati + "," + longi + "," +year+"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(data) {
               //console.log(data);
-              resultJson = JSON.stringify(data);
+              //resultJson = data;
               //iterate through JSON to find the temperatures of evvery hour for the day
+              /**
+              for (i = 0; i < data.hourly.data.length; i++){
+                  if (data.hourly.data[i].temperature > 75){
+                      acOn = acOn+1;
+                  }
+                  else if (data.hourly.data[i].temperature < 62) {
+                      heaterOn = heaterOn+1;
+                  }
+              }
+              **/
                   $('#ac').html('and the ac was turned on ' + acOn + " times.");
-
+                  console.log("ac "+acOn);
+                  acArr.push(acOn);
                   $('#heater').html('and the heater was turned on ' + heaterOn + " times.");
-
+                  console.log("heater "+heaterOn);
+                  heatArr.push(heaterOn);
                   //console.log("length of data array: "+data.hourly.data.length);
             });
-            for (i = 0; i < resultJson.data.hourly.data.length; i++){
-                if (resultJson.data.hourly.data[i].temperature > 75){
-                    acOn = acOn+1;
-                }
-                else if (resultJson.data.hourly.data[i].temperature < 62) {
-                    heaterOn = heaterOn+1;
-                }
-            }
             //push all data to arrays for later use
             dateArr.push(year+"-"+month+"-"+day);
-            console.log("ac "+acOn);
-            acArr.push(acOn);
-            console.log("heater "+heaterOn);
-            heatArr.push(heaterOn);
+
 
             //reset ac and heater counters
             acOn = 0;
