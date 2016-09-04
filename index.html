@@ -22,13 +22,12 @@
 
 <h1>What is the weather like?</h1>
 
+<!--
 <button onclick="currentWeather()">Current Weather</button>
 
 <button onclick="fetchWeather()">Fetch Weather</button>
 
-
 <p id="demo"></p>
-
 
 <weather>
    <span class="conditions_current"></span>
@@ -41,6 +40,7 @@
      <span class="humidity"></span>
    </infomation>
 </weather>
+-->
 
 <p id="ac">AC switches:</p>
 <p id="heater"> Heater switchs </p>
@@ -72,32 +72,51 @@
         var data;
         var acOn = 0;
         var heaterOn = 0;
-        var resultJson;
+        var dateArr;
+        var acArr;
+        var heatArr;
 
-        //for (j = 0; j < 2; j++){
-        //    incString(day);
-        console.log("day before: "+day);
-        day = incString(day);
-        console.log("day of: "+ day);
-        $.getJSON(url + apiKey + "/" + lati + "," + longi + "," +year+"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(data) {
-          console.log(data);
-          resultJson = data;
-          //data.hourly.data.length
-          for (i = 0; i < data.hourly.data.length; i ++){
-              if (data.hourly.data[i].temperature > 75){
-                  acOn++;
+        for (j = 0; j < 2; j++){//for each day
+            //console.log("day before: "+day);
+            //increment day
+            day = incString(day);
+            //console.log("day of: "+ day);
+            //call api to GET json
+            $.getJSON(url + apiKey + "/" + lati + "," + longi + "," +year+"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(data) {
+              //console.log(data);
+              //resultJson = data;
+              //data.hourly.data.length
+              //iterate through JSON to find the temperatures of evvery hour for the day
+              for (i = 0; i < data.hourly.data.length; i ++){
+                  if (data.hourly.data[i].temperature > 75){
+                      acOn++;
+                  }
+                  else if (data.hourly.data[i].temperature < 62) {
+                      heaterOn++;
+                  }
               }
-              else if (data.hourly.data[i].temperature < 62) {
-                  heaterOn++;
-              }
-          }
-              $('#ac').html('and the ac was turned on ' + acOn + " times.");
-              $('#heater').html('and the heater was turned on ' + heaterOn + " times.");
-              console.log("length of data array: "+data.hourly.data.length);
-        });
-        //}
+                  $('#ac').html('and the ac was turned on ' + acOn + " times.");
+                  $('#heater').html('and the heater was turned on ' + heaterOn + " times.");
+                  //console.log("length of data array: "+data.hourly.data.length);
+            });
+            //push all data to arrays for later use
+            dateArr.push(year+"-"+month+"-"+day);
+            acArr.push(acOn);
+            heatArr.push(heaterOn);
 
+            //reset ac and heater counters
+            acOn = 0;
+            heaterOn = 0;
+        }
 
+        /**
+        var resultJson = '{'+ '"results"'+'[{'+
+            '"date" : "'+year+'-'+month+'-'+day+'"'+','+
+            '"ACswitches" : "'+acOn+','+
+            '"heaterSwitches" : "'+heaterOn+
+            '},'+
+        ']}}';
+        **/
 
         /**
         $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
