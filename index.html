@@ -96,23 +96,22 @@
                       heaterOn = heaterOn+1;
                   }
               }
-              
+
                   $('#ac').html('and the ac was turned on ' + acOn + " times.");
                   console.log("ac "+acOn);
                   acArr.push(acOn);
                   $('#heater').html('and the heater was turned on ' + heaterOn + " times.");
                   console.log("heater "+heaterOn);
                   heatArr.push(heaterOn);
-                  //console.log("length of data array: "+data.hourly.data.length);
+                  //reset ac and heater counters
+                  acOn = 0;
+                  heaterOn = 0;
             });
             //push all data to arrays for later use
             dateArr.push(year+"-"+month+"-"+day);
-
-
-            //reset ac and heater counters
-            acOn = 0;
-            heaterOn = 0;
         }
+        console.log(dateArr[0] + ": ac: "+acArr[0]+", heat: "+heatArr[0]);
+        console.log(dateArr[1] + ": ac: "+acArr[1]+", heat: "+heatArr[1]);
 
         /**
         var resultJson = '{'+ '"results"'+'[{'+
