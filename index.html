@@ -12,15 +12,72 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="main.js"></script>
-        <!--
-        //<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        //<script src="getInfo.js"></script>
-        //<script type="text/javascript" src="drawData.js"></script>
-        //<link rel="stylesheet" type="text/css" href="prettify.css">
-    -->
-</head>
+    </head>
 
-<h1>What is the weather like?</h1>
+    <h1>What is the weather like?</h1>
+    <div>
+        <header>
+            <button>«</button>
+            <h2>June 2016</h2>
+            <button>»</button>
+        </header>
+        <table>
+            <tr>
+                <td>S</td>
+                <td>M</td>
+                <td>T</td>
+                <td>W</td>
+                <td>Th</td>
+                <td>F</td>
+                <td>S</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
 
 <!--
 <button onclick="currentWeather()">Current Weather</button>
@@ -41,79 +98,81 @@
    </infomation>
 </weather>
 -->
-
-<p id="ac">AC switches:</p>
-<p id="heater"> Heater switchs </p>
-<button onclick="getData()">Get Data</button>
-
+    <body>
+        <p id="ac">AC switches:</p>
+        <p id="heater"> Heater switchs </p>
+        <button onclick="getData()">Get Data</button>
+    </body>
     <script>
 
-    function incString(string){
-        var num = Number(string);
-        num++;
-        var str = num.toString();
-        if(str.length < 2){
-            return "0"+str;
-        }
-        else{
-            return str;
-        }
-    }
 
-    function getData(){
 
-        var apiKey = 'f33d413250b6d07e6fa54b0a0d1bd5fa';
-        var url = 'https://api.forecast.io/forecast/';
-        var lati = 45.5898;
-        var longi = -122.5951;
-        var year = "2016";
-        var month = "06";
-        var day = "00";
-        var data;
-        var acOn = 0;
-        var heaterOn = 0;
         var dateArr = [];
         var acArr = [];
         var heatArr = [];
-        var resultJson;
 
-        for (j = 0; j < 30; j++){//for each day
-            //console.log("day before: "+day);
-            //increment day
-            day = incString(day);
-            //console.log("day of: "+ day);
-            //call api to GET json
-            $.getJSON(url + apiKey + "/" + lati + "," + longi + "," +year+"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(data) {
-              //console.log(data);
-              //resultJson = data;
-              //iterate through JSON to find the temperatures of evvery hour for the day
+        function getData(){
 
-              for (i = 0; i < data.hourly.data.length; i++){
-                  if (data.hourly.data[i].temperature > 75){
-                      acOn = acOn+1;
-                  }
-                  else if (data.hourly.data[i].temperature < 62) {
-                      heaterOn = heaterOn+1;
-                  }
-              }
+            var apiKey = 'f33d413250b6d07e6fa54b0a0d1bd5fa';
+            var url = 'https://api.forecast.io/forecast/';
+            var lati = 45.5898;
+            var longi = -122.5951;
+            var year = "2016";
+            var month = "06";
+            var day = "00";
+            //var data;
+            var acOn = 0;
+            var heaterOn = 0;
+            //var resultJson;
 
-                  $('#ac').html('and the ac was turned on ' + acOn + " times.");
-                  console.log("ac "+acOn);
-                  acArr.push(acOn);
-                  $('#heater').html('and the heater was turned on ' + heaterOn + " times.");
-                  console.log("heater "+heaterOn);
-                  heatArr.push(heaterOn);
-                  //reset ac and heater counters
-                  acOn = 0;
-                  heaterOn = 0;
-                  console.log(day + ": ac: "+acArr[j]+", heat: "+heatArr[j]);
-                  //console.log(dateArr[1] + ": ac: "+acArr[1]+", heat: "+heatArr[1]);
-            });
-            //push all data to arrays for later use
-            dateArr.push(year+"-"+month+"-"+day);
+            for (j = 0; j < 30; j++){//for each day
+                //console.log("day before: "+day);
+                //increment day
+                day = incString(day);
+                //console.log("day of: "+ day);
+                //call api to GET json
+                $.getJSON(url + apiKey + "/" + lati + "," + longi + "," +year+"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(data) {
+                  //console.log(data);
+                  //resultJson = data;
+                  //iterate through JSON to find the temperatures of evvery hour for the day
+
+                    for (i = 0; i < data.hourly.data.length; i++){
+                        if (data.hourly.data[i].temperature > 75){
+                            acOn = acOn+1;
+                        }
+                        else if (data.hourly.data[i].temperature < 62) {
+                            heaterOn = heaterOn+1;
+                        }
+                    }
+                        //push all data to arrays for later use
+                        dateArr.push(year+"-"+month+"-"+day);
+                        $('#ac').html('and the ac was turned on ' + acOn + " times.");
+                        console.log("ac "+acOn);
+                        acArr.push(acOn);
+                        $('#heater').html('and the heater was turned on ' + heaterOn + " times.");
+                        console.log("heater "+heaterOn);
+                        heatArr.push(heaterOn);
+
+                        //reset ac and heater counters
+                        acOn = 0;
+                        heaterOn = 0;
+                      //console.log(day + ": ac: "+acArr[j]+", heat: "+heatArr[j]);
+                      //console.log(dateArr[1] + ": ac: "+acArr[1]+", heat: "+heatArr[1]);
+                });
+            }
         }
 
-
+        function incString(string){
+            var num = Number(string);
+            num++;
+            var str = num.toString();
+            if(str.length < 2){
+                return "0"+str;
+            }
+            else{
+                return str;
+            }
+        }
         /**
         var resultJson = '{'+ '"results"'+'[{'+
             '"date" : "'+year+'-'+month+'-'+day+'"'+','+
@@ -123,56 +182,5 @@
         ']}}';
         **/
 
-        /**
-        $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
-              //console.log(data);
-              $('#weather').html('and the temperature is: ' + data.hourly.data[0].temperature);
-            });
-        **/
-        ///**
-
-
-        //**/
-        //$('#weather').html('and the temperature is: ' + resultJson.hourly.data[0].temperature);
-
-
-        //console.log(resultJson.currently.temperature);
-
-        //for (i = 0; i < resultJson.hourly.data.length; i++){
-        //    console.log(resultJson.hourly.data[0].temperature);
-        //}
-
-
-    }
-    /**
-    function checkTemp(id, newUsername) {
-        for (var i=0; i<jsonObj.length; i++) {
-            if (jsonObj[i].Id === id) {
-                jsonObj[i].Username = newUsername;
-                return;
-            }
-        }
-    }
-    **/
     </script>
-
-
-
-<body>
-    <!--
-    <h3> What data would you like to view?</h3>
-
-    <ul id="navbar">
-
-        <li><a href="artist.html">Artists</a></li>
-        <li><a href="userInfo.html">Users</a></li>
-        <li><a href="tracks.html">Tracks</a></li>
-        <li><a href="login.html">Log In</a></li>
-    </ul>
-
-    <div id="search_results">
-
-    </div>
-    -->
-</body>
 </html>
