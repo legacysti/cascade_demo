@@ -79,31 +79,121 @@
     <header>
         <h1>A/C and Heater Usage in June 2016</h1>
     </header>
-    <div class="row">
-        <div class ="col">
-            <div class="box">
-                <a href="day1">put it down, in center of box</a>
+    <div id= "calendar">
+        <div class="row">
+            <div class ="col">
+                <div class="box"></div>
+            </div>
+            <div class ="col">
+                <div class="box"></div>
+            </div>
+            <div class ="col">
+                <div class="box"></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day1"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day2"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day3"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day4"></b></div>
             </div>
         </div>
-        <div class ="col">
-            <div class="box">
-                <b id="day1"></b>
+        <div class="row">
+            <div class ="col">
+                <div class="box"><b id="day5"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day6"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day7"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day8"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day9"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day10"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day11"></b></div>
             </div>
         </div>
-        <div class ="col">
-            <div class="box"></div>
+        <div class="row">
+            <div class ="col">
+                <div class="box"><b id="day12"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day13"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day14"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day15"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day16"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day17"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day18"></b></div>
+            </div>
         </div>
-        <div class ="col">
-            <div class="box"></div>
+        <div class="row">
+            <div class ="col">
+                <div class="box"><b id="day19"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day20"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day21"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day22"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day23"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day24"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day25"></b></div>
+            </div>
         </div>
-        <div class ="col">
-            <div class="box"></div>
-        </div>
-        <div class ="col">
-            <div class="box"></div>
-        </div>
-        <div class ="col">
-            <div class="box"></div>
+        <div class="row">
+            <div class ="col">
+                <div class="box"><b id="day26"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day27"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day28"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day29"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"><b id="day30"></b></div>
+            </div>
+            <div class ="col">
+                <div class="box"></div>
+            </div>
+            <div class ="col">
+                <div class="box"></div>
+            </div>
         </div>
     </div>
 <!--
@@ -126,18 +216,19 @@
 </weather>
 -->
     <body>
+        <button onclick="main()">Click To Get Data</button>
         <p id="ac">AC switches:</p>
         <p id="heater"> Heater switchs </p>
-        <button onclick="getData()">Get Data</button>
+
     </body>
     <script>
-
-
-
         var dateArr = [];
         var acArr = [];
         var heatArr = [];
-
+        function main(){
+            getData();
+            displayData();
+        }
         function getData(){
 
             var apiKey = 'f33d413250b6d07e6fa54b0a0d1bd5fa';
@@ -186,8 +277,14 @@
                       //console.log(day + ": ac: "+acArr[j]+", heat: "+heatArr[j]);
                       //console.log(dateArr[1] + ": ac: "+acArr[1]+", heat: "+heatArr[1]);
                 });
-                document.getElementById("day1").innerHTML = 5 +'<br>'+6;
             }
+        }
+
+        function displayData(){
+            for(x=1; x <= 30; x++){
+                document.getElementById("day"+x.toString()).innerHTML = dateArr[x-1] +"<br>"+ "A/C: "+acArr[x-1]+ "<br>"+"Heater: "+heatArr[x-1];
+            }
+
         }
 
         function incString(string){
