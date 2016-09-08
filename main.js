@@ -25,7 +25,7 @@ var dayCounter	 =	1;
 
 function exeForecast(){
 	fetchWeather("fetching", function(){
-		setTimeout(function(){console.log("wait 3 seconds");}, 3000);
+		setTimeout(function(){console.log("wait 5 seconds");}, 5000);
 	});
 }
 
