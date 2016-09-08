@@ -70,7 +70,6 @@ function fetchWeather() {
 	if(dayCounter <= 30){
 		setTimeout(function() { fetchWeather(); }, 2000);
 	}
-	console.log("fetchWeather() is done");
 }
 
 /*

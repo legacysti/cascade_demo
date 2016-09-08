@@ -1,17 +1,4 @@
-/*.row {
-    text-align: justify;
-    min-width: 412px;
-    border: 1px solid green;
-    width: 80%; /* it changes by screen size actually *
-    height: 90px;
-    padding: 5px;
-}
 
-.row:after {
-    content: '';
-    display: inline-block;
-    width: 100%;
-}*/
 .col {
     display: inline-block;
 }
