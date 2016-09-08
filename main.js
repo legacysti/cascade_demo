@@ -30,41 +30,45 @@ function exeForecast(){
 
 /* Function: Fetch Forecast.io weather forecast */
 function fetchWeather(param, callback) {
+	for (j = 0; j < 30; j++){//for each day
+		if (j>1){
 
-	//iterate through day
-	day = incString(day);
+		}
+		//iterate through day
+		day = incString(day);
 
-	//call api to get data for day
-	$.ajax({
-		url: FORECAST_URL + FORECAST_API + '/' + latitude + ',' + longitude + "," + year +"-" + month + "-" + day + "T00:00:00" +"?units=auto",
-		dataType: "jsonp",
-		success: function (data) { weatherData = data;	/* Store our newly aquired weather data */
+		//call api to get data for day
+		$.ajax({
+			url: FORECAST_URL + FORECAST_API + '/' + latitude + ',' + longitude + "," + year +"-" + month + "-" + day + "T00:00:00" +"?units=auto",
+			dataType: "jsonp",
+			success: function (data) { weatherData = data;	/* Store our newly aquired weather data */
 
-			//check each our fo the day and increment as and heater usage for the 24 hours
-			for (i = 0; i < data.hourly.data.length; i++){
-				if (data.hourly.data[i].temperature > 75){
-					acOn = acOn+1;
+				//check each our fo the day and increment as and heater usage for the 24 hours
+				for (i = 0; i < data.hourly.data.length; i++){
+					if (data.hourly.data[i].temperature > 75){
+						acOn = acOn+1;
+					}
+					else if (data.hourly.data[i].temperature < 62) {
+						heaterOn = heaterOn+1;
+					}
 				}
-				else if (data.hourly.data[i].temperature < 62) {
-					heaterOn = heaterOn+1;
-				}
+
+				//push all data to arrays for later use
+				dateArr.push(year+"-"+month+"-"+day);
+				$('#ac').html('and the ac was turned on ' + acOn + " times.");
+				console.log("ac "+acOn);
+				acArr.push(acOn);
+				$('#heater').html('and the heater was turned on ' + heaterOn + " times.");
+				console.log("heater "+heaterOn);
+				heatArr.push(heaterOn);
+
+				//reset ac and heater counters
+				acOn = 0;
+				heaterOn = 0;
 			}
 
-			//push all data to arrays for later use
-			dateArr.push(year+"-"+month+"-"+day);
-			$('#ac').html('and the ac was turned on ' + acOn + " times.");
-			console.log("ac "+acOn);
-			acArr.push(acOn);
-			$('#heater').html('and the heater was turned on ' + heaterOn + " times.");
-			console.log("heater "+heaterOn);
-			heatArr.push(heaterOn);
-
-			//reset ac and heater counters
-			acOn = 0;
-			heaterOn = 0;
-		}
-
-	});
+		});
+	}
 
 	var stringJson = JSON.stringify(weatherData);
 	//console.log("string here "+ stringJson);
