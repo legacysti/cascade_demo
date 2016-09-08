@@ -77,14 +77,11 @@ function fetchWeather(param, callback) {
 		alert("There is no more data to display")
 	}
 
-	// var stringJson = JSON.stringify(weatherData);
-	//console.log("string here "+ stringJson);
-	// console.log("check for current temp : "+stringJson.current);
 	if (callback && typeof(callback) === "function") {
         callback();
     }
 	// Fetch the weather every fifteen minutes
-	// setTimeout(function() { console.log("done with one ");  }, 900000);
+	setTimeout(function() { fetchWeather(); }, 3000);
 	console.log("fetchWeather() is done");
 }
 
