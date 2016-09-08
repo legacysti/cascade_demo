@@ -57,10 +57,10 @@ function fetchWeather(param, callback) {
 
 				//push all data to arrays for later use
 				dateArr.push(year+"-"+month+"-"+day);
-				$('#ac').html('and the ac was turned on ' + acOn + " times.");
+				// $('#ac').html('and the ac was turned on ' + acOn + " times.");
 				console.log("ac "+acOn);
 				acArr.push(acOn);
-				$('#heater').html('and the heater was turned on ' + heaterOn + " times.");
+				// $('#heater').html('and the heater was turned on ' + heaterOn + " times.");
 				console.log("heater "+heaterOn);
 				heatArr.push(heaterOn);
 				document.getElementById("day"+dayCounter.toString()).innerHTML = dateArr[dayCounter-1] +"<br>"+ "A/C: "+acArr[dayCounter-1]+ "<br>"+"Heater: "+heatArr[dayCounter-1];
