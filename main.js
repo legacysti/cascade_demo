@@ -24,7 +24,7 @@ var heatArr		 = 	[];
 
 function exeForecast(){
 	fetchWeather("fetching", function(){
-		displayData(callback);
+		displayData();
 	});
 }
 
@@ -67,8 +67,8 @@ function fetchWeather(param, callback) {
 	});
 
 	var stringJson = JSON.stringify(weatherData);
-	console.log("string here "+ stringJson);
-	console.log("check for current temp : "+stringJson.latitude);
+	//console.log("string here "+ stringJson);
+	console.log("check for current temp : "+stringJson.current);
 	if (callback && typeof(callback) === "function") {
         callback();
     }
