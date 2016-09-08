@@ -31,7 +31,7 @@ function exeForecast(){
 
 /* Function: Fetch Forecast.io weather forecast */
 function fetchWeather(param, callback) {
-	if
+	if(dayCounter<= 30){
 	// for (j = 0; j < 30; j++){//for each day
 		// if (j>1){
 		// 	// setTimeout(, 3000);
@@ -72,7 +72,10 @@ function fetchWeather(param, callback) {
 
 		});
 	// 	setTimeout(function() { console.log("done with one call");  }, 3000);
-	// }
+	}
+	else{
+		alert("There is no more data to display")
+	}
 
 	// var stringJson = JSON.stringify(weatherData);
 	//console.log("string here "+ stringJson);
