@@ -62,7 +62,7 @@ function fetchWeather(param, callback) {
 				$('#heater').html('and the heater was turned on ' + heaterOn + " times.");
 				console.log("heater "+heaterOn);
 				heatArr.push(heaterOn);
-				document.getElementById("day"+dayCounter.toString())).innerHTML = dateArr[dayCounter-1] +"<br>"+ "A/C: "+acArr[dayCounter-1]+ "<br>"+"Heater: "+heatArr[dayCounter-1];
+				document.getElementById("day"+dayCounter.toString()).innerHTML = dateArr[dayCounter-1] +"<br>"+ "A/C: "+acArr[dayCounter-1]+ "<br>"+"Heater: "+heatArr[dayCounter-1];
 
 				//reset ac and heater counters
 				acOn = 0;
