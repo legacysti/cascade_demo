@@ -24,6 +24,7 @@ var heatArr		 = 	[];
 
 /* Function: Fetch Forecast.io weather forecast */
 function fetchWeather() {
+	incString();
 	$.ajax({
 		url: FORECAST_URL + FORECAST_API + '/' + latitude + ',' + longitude + "," + year +"-" + month + "-" + day + "T00:00:00" +"?units=auto",
 		dataType: "jsonp",
