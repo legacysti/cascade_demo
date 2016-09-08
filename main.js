@@ -24,11 +24,17 @@ var heatArr		 = 	[];
 
 /* Function: Fetch Forecast.io weather forecast */
 function fetchWeather() {
-	incString();
+
+	//iterate through day
+	day = incString(day);
+
+	//call api to get data for day
 	$.ajax({
 		url: FORECAST_URL + FORECAST_API + '/' + latitude + ',' + longitude + "," + year +"-" + month + "-" + day + "T00:00:00" +"?units=auto",
 		dataType: "jsonp",
 		success: function (data) { weatherData = data;	/* Store our newly aquired weather data */
+
+			//check each our fo the day and increment as and heater usage for the 24 hours
 			for (i = 0; i < data.hourly.data.length; i++){
 				if (data.hourly.data[i].temperature > 75){
 					acOn = acOn+1;
@@ -37,6 +43,7 @@ function fetchWeather() {
 					heaterOn = heaterOn+1;
 				}
 			}
+
 			//push all data to arrays for later use
 			dateArr.push(year+"-"+month+"-"+day);
 			$('#ac').html('and the ac was turned on ' + acOn + " times.");
