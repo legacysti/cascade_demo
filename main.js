@@ -31,6 +31,7 @@ function exeForecast(){
 
 /* Function: Fetch Forecast.io weather forecast */
 function fetchWeather(param, callback) {
+	if
 	// for (j = 0; j < 30; j++){//for each day
 		// if (j>1){
 		// 	// setTimeout(, 3000);
@@ -63,7 +64,7 @@ function fetchWeather(param, callback) {
 				console.log("heater "+heaterOn);
 				heatArr.push(heaterOn);
 				document.getElementById("day"+dayCounter.toString()).innerHTML = dateArr[dayCounter-1] +"<br>"+ "A/C: "+acArr[dayCounter-1]+ "<br>"+"Heater: "+heatArr[dayCounter-1];
-
+				dayCounter++;
 				//reset ac and heater counters
 				acOn = 0;
 				heaterOn = 0;
@@ -73,9 +74,9 @@ function fetchWeather(param, callback) {
 	// 	setTimeout(function() { console.log("done with one call");  }, 3000);
 	// }
 
-	var stringJson = JSON.stringify(weatherData);
+	// var stringJson = JSON.stringify(weatherData);
 	//console.log("string here "+ stringJson);
-	console.log("check for current temp : "+stringJson.current);
+	// console.log("check for current temp : "+stringJson.current);
 	if (callback && typeof(callback) === "function") {
         callback();
     }
