@@ -21,6 +21,7 @@ var heaterOn 	 =  0;
 var dateArr      =  [];
 var acArr 	     =  [];
 var heatArr		 = 	[];
+var dayCounter	 =	1;
 
 function exeForecast(){
 	fetchWeather("fetching", function(){
@@ -61,7 +62,7 @@ function fetchWeather(param, callback) {
 				$('#heater').html('and the heater was turned on ' + heaterOn + " times.");
 				console.log("heater "+heaterOn);
 				heatArr.push(heaterOn);
-				document.getElementById("day"+((j+1).toString())).innerHTML = dateArr[j] +"<br>"+ "A/C: "+acArr[j]+ "<br>"+"Heater: "+heatArr[j];
+				document.getElementById("day"+dayCounter.toString())).innerHTML = dateArr[dayCounter-1] +"<br>"+ "A/C: "+acArr[dayCounter-1]+ "<br>"+"Heater: "+heatArr[dayCounter-1];
 
 				//reset ac and heater counters
 				acOn = 0;
@@ -84,10 +85,10 @@ function fetchWeather(param, callback) {
 }
 
 function displayData(){
-	for(x=1; x <= 30; x++){
-		document.getElementById("day"+x.toString()).innerHTML = x +"<br>"+ "A/C: "+x+ "<br>"+"Heater: "+x;//test
-		// document.getElementById("day"+x.toString()).innerHTML = dateArr[x-1] +"<br>"+ "A/C: "+acArr[x-1]+ "<br>"+"Heater: "+heatArr[x-1];
-	}
+	// for(x=1; x <= 30; x++){
+	// 	document.getElementById("day"+x.toString()).innerHTML = x +"<br>"+ "A/C: "+x+ "<br>"+"Heater: "+x;//test
+	// 	// document.getElementById("day"+x.toString()).innerHTML = dateArr[x-1] +"<br>"+ "A/C: "+acArr[x-1]+ "<br>"+"Heater: "+heatArr[x-1];
+	// }
 	console.log("displayData() is done");
 }
 
