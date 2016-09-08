@@ -15,7 +15,12 @@ var latitude     =	"45.5898";	// Your Latitude
 var longitude    =	"-122.5951";	// Your Longitude
 var year         =  "2016"
 var month        =	"06"
-var day          =	"01"
+var day          =	"00"
+var acOn 		 =  0;
+var heaterOn 	 =  0;
+var dateArr      =  [];
+var acArr 	     =  [];
+var heatArr		 = 	[];
 
 /* Function: Fetch Forecast.io weather forecast */
 function fetchWeather() {
@@ -23,9 +28,29 @@ function fetchWeather() {
 		url: FORECAST_URL + FORECAST_API + '/' + latitude + ',' + longitude + "," + year +"-" + month + "-" + day + "T00:00:00" +"?units=auto",
 		dataType: "jsonp",
 		success: function (data) { weatherData = data;	/* Store our newly aquired weather data */
+			for (i = 0; i < data.hourly.data.length; i++){
+				if (data.hourly.data[i].temperature > 75){
+					acOn = acOn+1;
+				}
+				else if (data.hourly.data[i].temperature < 62) {
+					heaterOn = heaterOn+1;
+				}
+			}
+			//push all data to arrays for later use
+			dateArr.push(year+"-"+month+"-"+day);
+			$('#ac').html('and the ac was turned on ' + acOn + " times.");
+			console.log("ac "+acOn);
+			acArr.push(acOn);
+			$('#heater').html('and the heater was turned on ' + heaterOn + " times.");
+			console.log("heater "+heaterOn);
+			heatArr.push(heaterOn);
 
+			//reset ac and heater counters
+			acOn = 0;
+			heaterOn = 0;
 		}
 	});
+
 	var stringJson = JSON.stringify(weatherData);
 	console.log("string here "+ stringJson);
 	console.log("check for current temp : "+stringJson.latitude);
@@ -36,7 +61,17 @@ function fetchWeather() {
 	setTimeout(function() { fetchWeather();  }, 900000);
 }
 
-
+function incString(string){
+	var num = Number(string);
+	num++;
+	var str = num.toString();
+	if(str.length < 2){
+		return "0"+str;
+	}
+	else{
+		return str;
+	}
+}
 /*
  * Below are some examples on how to use the data collected in weatherData
  * In my project I used the Skycon HTML5 SVG icon set made by Dark Sky themselves as it's tied into the Forecase.io API.
@@ -76,7 +111,7 @@ function currentWeather() {
 
 	// Daily summary
 	$('.conditions_current').update(weatherData.hourly.summary);
-	
+
 	// Temperature
 	$('.temp_current').update(round(weatherData.currently.temperature, 1) + '&deg;');
 

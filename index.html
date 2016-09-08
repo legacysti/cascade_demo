@@ -20,17 +20,8 @@
         <h1>A/C and Heater Usage in June 2016</h1>
     </header>
 
-    <div id= "calendar", class="container-fluid">
+    <div class="container-fluid">
         <div class="row">
-            <div class ="col">
-                <div class="box"><b> </b></div>
-            </div>
-            <div class ="col">
-                <div class="box"><b> </b></div>
-            </div>
-            <div class ="col">
-                <div class="box"><b> </b></div>
-            </div>
             <div class ="col">
                 <div class="box"><b id="day1"> </b></div>
             </div>
@@ -43,8 +34,6 @@
             <div class ="col">
                 <div class="box"><b id="day4"> </b></div>
             </div>
-        </div>
-        <div class="row">
             <div class ="col">
                 <div class="box"><b id="day5"></b></div>
             </div>
@@ -54,6 +43,8 @@
             <div class ="col">
                 <div class="box"><b id="day7"></b></div>
             </div>
+        </div>
+        <div class="row">
             <div class ="col">
                 <div class="box"><b id="day8"></b></div>
             </div>
@@ -66,8 +57,6 @@
             <div class ="col">
                 <div class="box"><b id="day11"></b></div>
             </div>
-        </div>
-        <div class="row">
             <div class ="col">
                 <div class="box"><b id="day12"></b></div>
             </div>
@@ -77,6 +66,8 @@
             <div class ="col">
                 <div class="box"><b id="day14"></b></div>
             </div>
+        </div>
+        <div class="row">
             <div class ="col">
                 <div class="box"><b id="day15"></b></div>
             </div>
@@ -89,8 +80,6 @@
             <div class ="col">
                 <div class="box"><b id="day18"></b></div>
             </div>
-        </div>
-        <div class="row">
             <div class ="col">
                 <div class="box"><b id="day19"></b></div>
             </div>
@@ -100,6 +89,8 @@
             <div class ="col">
                 <div class="box"><b id="day21"></b></div>
             </div>
+        </div>
+        <div class="row">
             <div class ="col">
                 <div class="box"><b id="day22"></b></div>
             </div>
@@ -112,8 +103,6 @@
             <div class ="col">
                 <div class="box"><b id="day25"></b></div>
             </div>
-        </div>
-        <div class="row">
             <div class ="col">
                 <div class="box"><b id="day26"></b></div>
             </div>
@@ -123,17 +112,13 @@
             <div class ="col">
                 <div class="box"><b id="day28"></b></div>
             </div>
+        </div>
+        <div class="row">
             <div class ="col">
                 <div class="box"><b id="day29"></b></div>
             </div>
             <div class ="col">
                 <div class="box"><b id="day30"></b></div>
-            </div>
-            <div class ="col">
-                <div class="box"></div>
-            </div>
-            <div class ="col">
-                <div class="box"></div>
             </div>
         </div>
     </div>
@@ -157,9 +142,9 @@
 </weather>
 -->
     <body>
-        <button onclick="main()">Click To Get Data</button>
+        <button onclick="fetchWeather()">Click To Get Data</button>
         <p id="ac">AC switches:</p>
-        <p id="heater"> Heater switchs </p>
+        <p id="heater"> Heater switches: </p>
 
     </body>
     <script>
@@ -185,6 +170,9 @@
             //var resultJson;
 
             for (j = 0; j < 30; j++){//for each day
+                if (j>1){
+
+                }
                 //console.log("day before: "+day);
                 //increment day
                 day = incString(day);
@@ -193,8 +181,8 @@
                 $.getJSON(url + apiKey + "/" + lati + "," + longi + "," +year+"-"+month+"-"+day+"T00:00:00" +"?callback=?", function(data) {
                   //console.log(data);
                   //resultJson = data;
-                  //iterate through JSON to find the temperatures of evvery hour for the day
 
+                  //iterate through JSON to find the temperatures of every hour for the day
                     for (i = 0; i < data.hourly.data.length; i++){
                         if (data.hourly.data[i].temperature > 75){
                             acOn = acOn+1;
