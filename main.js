@@ -25,7 +25,7 @@ var dayCounter	 =	1;
 
 function exeForecast(){
 	fetchWeather("fetching", function(){
-		setTimeout(function(){console.log("wait 5 seconds");}, 5000);
+		// setTimeout(function(){console.log("wait 5 seconds");}, 5000);
 	});
 }
 
@@ -71,8 +71,11 @@ function fetchWeather(param, callback) {
 			}
 
 		});
-	// 	setTimeout(function() { console.log("done with one call");  }, 3000);
+
+	// Fetch the weather every 2 seconds
+	setTimeout(function() { fetchWeather(); }, 2000);
 	}
+
 	else{
 		alert("There is no more data to display")
 	}
@@ -80,8 +83,7 @@ function fetchWeather(param, callback) {
 	if (callback && typeof(callback) === "function") {
         callback();
     }
-	// Fetch the weather every fifteen minutes
-	setTimeout(function() { fetchWeather(); }, 3000);
+
 	console.log("fetchWeather() is done");
 }
 
