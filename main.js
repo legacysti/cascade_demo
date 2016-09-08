@@ -32,7 +32,7 @@ function exeForecast(){
 function fetchWeather(param, callback) {
 	for (j = 0; j < 30; j++){//for each day
 		if (j>1){
-			setTimeout(, 3000);
+			// setTimeout(, 3000);
 		}
 		//iterate through day
 		day = incString(day);
