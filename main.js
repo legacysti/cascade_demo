@@ -31,9 +31,9 @@ function exeForecast(){
 /* Function: Fetch Forecast.io weather forecast */
 function fetchWeather(param, callback) {
 	for (j = 0; j < 30; j++){//for each day
-		if (j>1){
-			// setTimeout(, 3000);
-		}
+		// if (j>1){
+		// 	// setTimeout(, 3000);
+		// }
 		//iterate through day
 		day = incString(day);
 
@@ -69,6 +69,7 @@ function fetchWeather(param, callback) {
 			}
 
 		});
+		setTimeout(function() { console.log("done with one call");  }, 3000);
 	}
 
 	var stringJson = JSON.stringify(weatherData);
@@ -78,15 +79,15 @@ function fetchWeather(param, callback) {
         callback();
     }
 	// Fetch the weather every fifteen minutes
-	// setTimeout(function() { fetchWeather();  }, 900000);
+	// setTimeout(function() { console.log("done with one ");  }, 900000);
 	console.log("fetchWeather() is done");
 }
 
 function displayData(){
-	// for(x=1; x <= 30; x++){
-	// 	//document.getElementById("day"+x.toString()).innerHTML = x +"<br>"+ "A/C: "+x+ "<br>"+"Heater: "+x;//test
-	// 	document.getElementById("day"+x.toString()).innerHTML = dateArr[x-1] +"<br>"+ "A/C: "+acArr[x-1]+ "<br>"+"Heater: "+heatArr[x-1];
-	// }
+	for(x=1; x <= 30; x++){
+		document.getElementById("day"+x.toString()).innerHTML = x +"<br>"+ "A/C: "+x+ "<br>"+"Heater: "+x;//test
+		// document.getElementById("day"+x.toString()).innerHTML = dateArr[x-1] +"<br>"+ "A/C: "+acArr[x-1]+ "<br>"+"Heater: "+heatArr[x-1];
+	}
 	console.log("displayData() is done");
 }
 
