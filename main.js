@@ -71,11 +71,8 @@ function fetchWeather(param, callback) {
 			}
 
 		});
-
-	// Fetch the weather every 2 seconds
-	setTimeout(function() { fetchWeather(); }, 2000);
+	// 	setTimeout(function() { console.log("done with one call");  }, 3000);
 	}
-
 	else{
 		alert("There is no more data to display")
 	}
@@ -83,7 +80,10 @@ function fetchWeather(param, callback) {
 	if (callback && typeof(callback) === "function") {
         callback();
     }
-
+	// Fetch the weather every 2 seconds
+	if(dayCounter <= 30){
+		setTimeout(function() { fetchWeather(); }, 2000);
+	}
 	console.log("fetchWeather() is done");
 }
 
