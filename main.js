@@ -30,7 +30,7 @@ function exeForecast(){
 
 /* Function: Fetch Forecast.io weather forecast */
 function fetchWeather(param, callback) {
-	for (j = 0; j < 30; j++){//for each day
+	// for (j = 0; j < 30; j++){//for each day
 		// if (j>1){
 		// 	// setTimeout(, 3000);
 		// }
@@ -69,8 +69,8 @@ function fetchWeather(param, callback) {
 			}
 
 		});
-		setTimeout(function() { console.log("done with one call");  }, 3000);
-	}
+	// 	setTimeout(function() { console.log("done with one call");  }, 3000);
+	// }
 
 	var stringJson = JSON.stringify(weatherData);
 	//console.log("string here "+ stringJson);
